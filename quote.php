@@ -39,129 +39,150 @@
       OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
       THE SOFTWARE.
 */
-
+	session_start();
 	header( 'Content-type: text/javascript' );
 
 /*
 	A blank, for your edification.
 
 	array(
-		"quote" => "",
-		"sayer" => "",
+		"content" => "",
+		"name" => "",
 		"link" => null,
 		"source" => ""
 	),
 */
 
+	$charities = array(
+		array(
+			"charity" => true,
+			"content" => "Kiva's mission is to connect people, through lending, for the sake of alleviating poverty.<br/><br/>Kiva empowers individuals to lend to an entrepreneur across the globe.",
+			"name" => "Visit Kiva.org",
+			"link" => "http://www.kiva.org/"
+		),
+		array(
+			"charity" => true,
+			"content" => "Samasource enables marginalized people, from refugees in Kenya to women in rural Pakistan, to receive life-changing work opportunities via the Internet.",
+			"name" => "Visit samasource.org",
+			"link" => "http://www.samasource.org/"
+		),
+		array(
+			"charity" => true,
+			"content" => "Improving public education by empowering every teacher to be a change-maker and enabling any citizen to be a philanthropist.",
+			"name" => "Visit DonorsChoose.org",
+			"link" => "http://www.donorschoose.org/"
+		)
+	);
+
 	$quotes = array(
 		// Create More
 		array(
-			"quote" => "Our duty, as men and women, is to proceed as if limits to our ability did not exist. We are collaborators in creation.",
-			"sayer" => "Teilhard de Chardin",
+			"content" => "Our duty, as men and women, is to proceed as if limits to our ability did not exist. We are collaborators in creation.",
+			"name" => "Teilhard de Chardin",
 			"link" => null,
 			"source" => "http://thinkexist.com/quotes/with/keyword/creation/"
 		),
 		array(
-			"quote" => "When we engage in what we are naturally suited to do, our work takes on the quality of play and it is play that stimulates creativity.",
-			"sayer" => "Linda Naiman",
+			"content" => "When we engage in what we are naturally suited to do, our work takes on the quality of play and it is play that stimulates creativity.",
+			"name" => "Linda Naiman",
 			"link" => null,
 			"source" => "http://abundance-blog.marelisa-online.com/2009/01/27/75-creativity-quotes/"
 		),
 		array(
-			"quote" => "But this is just the start of something much bigger.",
-			"sayer" => "Cory Doctorow",
+			"content" => "But this is just the start of something much bigger.",
+			"name" => "Cory Doctorow",
 			"link" => null,
 			"source" => "http://thinkexist.com/quotes/cory_doctorow/"
 		),
 		array(
-			"quote" => "Creativity is a type of learning process where the teacher and pupil are located in the same individual.",
-			"sayer" => "Arthur Koestler",
+			"content" => "Creativity is a type of learning process where the teacher and pupil are located in the same individual.",
+			"name" => "Arthur Koestler",
 			"link" => null,
 			"source" => "http://www.wisdomquotes.com/cat_creativity.html"
 		),
 		array(
-			"quote" => "If you want to make an apple pie from scratch, you must first create the universe.",
-			"sayer" => "Carl Sagan",
+			"content" => "If you want to make an apple pie from scratch, you must first create the universe.",
+			"name" => "Carl Sagan",
 			"link" => null,
 			"source" => "http://www.wisdomquotes.com/cat_creativity.html"
 		),
 		array(
-			"quote" => "Creativity is the sudden cessation of stupidity.",
-			"sayer" => "Edwin Land",
+			"content" => "Creativity is the sudden cessation of stupidity.",
+			"name" => "Edwin Land",
 			"link" => null,
 			"source" => "http://www.wisdomquotes.com/cat_creativity.html"
 		),
 		array(
-			"quote" => "It is better to have enough ideas for some of them to be wrong, than to be always right by having no ideas at all.",
-			"sayer" => "Edward de Bono",
+			"content" => "It is better to have enough ideas for some of them to be wrong, than to be always right by having no ideas at all.",
+			"name" => "Edward de Bono",
 			"link" => null,
 			"source" => "http://www.wisdomquotes.com/cat_creativity.html"
 		),
 		array(
-			"quote" => "It is better to have enough ideas for some of them to be wrong, than to be always right by having no ideas at all.",
-			"sayer" => "Edward de Bono",
+			"content" => "It is better to have enough ideas for some of them to be wrong, than to be always right by having no ideas at all.",
+			"name" => "Edward de Bono",
 			"link" => null,
 			"source" => "http://www.wisdomquotes.com/cat_creativity.html"
 		),
 		array(
-			"quote" => "Creativity comes from trust. Trust your instincts. And never hope more than you work.",
-			"sayer" => "Rita Mae Brown",
+			"content" => "Creativity comes from trust. Trust your instincts. And never hope more than you work.",
+			"name" => "Rita Mae Brown",
 			"link" => null,
 			"source" => "http://www.wisdomquotes.com/cat_creativity.html"
 		),
 		// Mixed
 				array(
-			"quote" => "Happiness is not in the mere possession of money; it lies in the joy of achievement, in the thrill of creative effort.",
-			"sayer" => "Franklin D. Roosevelt",
+			"content" => "Happiness is not in the mere possession of money; it lies in the joy of achievement, in the thrill of creative effort.",
+			"name" => "Franklin D. Roosevelt",
 			"link" => null,
 			"source" => "http://www.wisdomquotes.com/cat_creativity.html"
 		),
 		// Consume Less
 		array(
-			"quote" => "Growth for the sake of growth is the ideology of the cancer cell.",
-			"sayer" => "Edward Abbey",
+			"content" => "Growth for the sake of growth is the ideology of the cancer cell.",
+			"name" => "Edward Abbey",
 			"link" => null,
 			"source" => "http://www.quotegarden.com/consumerism.html"
 		),
 		array(
-			"quote" => "You have succeeded in life when all you really want is only what you really need.",
-			"sayer" => "Vernon Howard",
+			"content" => "You have succeeded in life when all you really want is only what you really need.",
+			"name" => "Vernon Howard",
 			"link" => null,
 			"source" => "http://www.quotegarden.com/consumerism.html"
 		),
 		array(
-			"quote" => "The hardest thing is to take less when you can get more.",
-			"sayer" => "Kin Hubbard",
+			"content" => "The hardest thing is to take less when you can get more.",
+			"name" => "Kin Hubbard",
 			"link" => null,
 			"source" => "http://www.quotegarden.com/consumerism.html"
 		),
 		array(
-			"quote" => "Do not trouble yourself much to get new things, whether clothes or friends.... Sell your clothes and keep your thoughts.",
-			"sayer" => "Henry David Thoreau",
+			"content" => "Do not trouble yourself much to get new things, whether clothes or friends.... Sell your clothes and keep your thoughts.",
+			"name" => "Henry David Thoreau",
 			"link" => null,
 			"source" => "http://www.quotegarden.com/consumerism.html"
 		),
 		array(
-			"quote" => "You can never get enough of what you don't need to make you happy.",
-			"sayer" => "Eric Hoffer",
+			"content" => "You can never get enough of what you don't need to make you happy.",
+			"name" => "Eric Hoffer",
 			"link" => null,
 			"source" => "http://www.quotegarden.com/consumerism.html"
 		),
 		array(
-			"quote" => "The corruption of the American soul is consumerism.",
-			"sayer" => "Ben Nicholson",
+			"content" => "The corruption of the American soul is consumerism.",
+			"name" => "Ben Nicholson",
 			"link" => null,
 			"source" => "http://www.brainyquote.com/quotes/keywords/consumerism.html"
 		),
 		array(
-			"quote" => "Pop culture is not about depth. It's about marketing, supply and demand, consumerism.",
-			"sayer" => "Trevor Dunn",
+			"content" => "Pop culture is not about depth. It's about marketing, supply and demand, consumerism.",
+			"name" => "Trevor Dunn",
 			"link" => null,
 			"source" => "http://www.brainyquote.com/quotes/keywords/consumerism.html"
 		),
 		array(
-			"quote" => "Never stay up on the barren heights of cleverness, but come down into the green valleys of silliness.",
-			"sayer" => "Ludwig Wittgenstein",
+			"content" => "Never stay up on the barren heights of cleverness, but come down into the green valleys of silliness.",
+			"name" => "Ludwig Wittgenstein",
 			"link" => null,
 			"source" => "http://en.wikiquote.org/wiki/Ludwig_Wittgenstein"
 		)
@@ -169,17 +190,35 @@
 
 	// If they provide a token, we should make sure they only see each quote once
 	if( isset( $_REQUEST['token'] ) && ! empty( $_REQUEST['token'] ) ) {
-		session_start();
+
 		$seen = array();
-		if( ! isset( $_SESSION['token'] ) || $_REQUEST['token'] != $_SESSION['token'] )
+		if( ! isset( $_SESSION['token'] ) || $_REQUEST['token'] != $_SESSION['token'] ) {
 			$_SESSION['token'] = $_REQUEST['token'];
+			$_SESSION['charity-counter'] = 0;
+		}
 		else
 			$seen = unserialize( $_SESSION['seen'] );
 		
 		// Seen them all?
 		if( count( $seen ) == count( $quotes ) )
 			die( json_encode( array( 'completed' => true ) ) );
+
+		// Tokened users get to see charity links every 4 quotes
+		if( ! isset( $_SESSION['charity-counter'] ) )
+			$_SESSION['charity-counter'] = 0;
 		
+		++$_SESSION['charity-counter'];
+
+		if( 0 == $_SESSION['charity-counter'] % 4 ) {
+			$offset = floor( $_SESSION['charity-counter'] / 4 );
+			// Roll through all the charity options
+			if( count( $charities ) <= $offset ) {
+				$_SESSION['charity-counter'] = 0;
+				$offset = 0;
+			}
+			die( json_encode( $charities[ $offset ] ) );
+		}
+
 		// Filter them...
 		$choices = array();
 		foreach( $quotes as $key => $quote )
@@ -193,9 +232,9 @@
 		$seen[$index] = true;
 		$_SESSION['seen'] = serialize( $seen );
 		
-		die( $quote = json_encode( $quotes[$index] ) );
+		die( json_encode( $quotes[$index] ) );
 	}
 	else {
 		// No token? Take what you are given.
-		die( $quote = json_encode( $quotes[array_rand( $quotes )] ) );
+		die( json_encode( $quotes[array_rand( $quotes )] ) );
 	}
