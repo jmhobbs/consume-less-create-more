@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^background.gif - [L]
+RewriteRule ^README.markdown README.markdown [L]
+RewriteRule ^quote quote.php [L]
+RewriteRule ^(.*) index.html [L]
