@@ -54,13 +54,15 @@
 				quote: null,
 				effect: null,
 				sayer: null,
-				linkbox: null,
+				link_box: null,
 				body: null,
+				play_pause: null,
 				
 				debounce_resize: null,
 				control_fader: null,
 				control_fading_in: false,
 				token: "",
+				quote_timer: null,
 
 				init: function () {
 					CLCM.token = Math.random();
@@ -69,12 +71,15 @@
 					CLCM.effect = $( "#effect-wrapper" );
 					CLCM.sayer = $( "#sayer" );
 					CLCM.body = $( "body" );
-					CLCM.linkbox = $( "#link-box" );
+					CLCM.play_pause = $( "#play-pause" );
+					CLCM.link_box = $( "#link-box" );
 					
-					CLCM.linkbox.hide();
+					CLCM.link_box.hide();
+					
+					CLCM.play_pause.bind( 'click', CLCM.change_state );
 					
 					$( window ).bind( 'resize', CLCM.window_resize ).trigger( 'resize' ).bind( 'mousemove', CLCM.window_mousemove );
-					setTimeout( CLCM.fresh_quote, 2500 );
+					CLCM.quote_timer = setTimeout( CLCM.fresh_quote, 2500 );
 				},
 
 				window_resize: function () {
@@ -86,15 +91,22 @@
 					if( CLCM.control_fader ) { clearTimeout( CLCM.control_fader ); }
 					CLCM.control_fader = setTimeout( CLCM.fade_controls, 2500 );
 					
-					if( CLCM.control_fading_in && CLCM.linkbox.is( ':animated' ) )
+					if( CLCM.control_fading_in && CLCM.link_box.is( ':animated' ) )
 						return;
 
-					CLCM.linkbox.fadeIn( 'fast' );
+					if( CLCM.control_faded_in )
+						return;
+
+					CLCM.control_fading_in = true;
+					CLCM.control_faded_in = false;
+
+					CLCM.link_box.fadeIn( 'fast', function () { CLCM.control_faded_in = true; } );
 				},
 				
 				fade_controls: function () {
+					CLCM.control_faded_in = false;
 					CLCM.control_fading_in = false;
-					CLCM.linkbox.stop().fadeOut( 'fast' );
+					CLCM.link_box.stop().fadeOut( 'fast' );
 				},
 
 				reposition: function () {
@@ -128,13 +140,29 @@
 									CLCM.sayer.append( sayer );
 									CLCM.effect.fadeIn(
 										function () {
-											setTimeout( CLCM.fresh_quote, 10000 );
+											if( false != CLCM.quote_timer )
+												CLCM.quote_timer = setTimeout( CLCM.fresh_quote, 10000 );
 										}
 									);
 								}
 							);
 						}
 					);
+				},
+				
+				change_state: function () {
+					if( false == CLCM.quote_timer ) {
+						CLCM.play_pause.text( 'pause' );
+						CLCM.quote_timer = null;
+						CLCM.fresh_quote();
+					}
+					else {
+						CLCM.play_pause.text( 'play' );
+						if( CLCM.quote_timer ) {
+							clearTimeout( CLCM.quote_timer );
+							CLCM.quote_timer = false;
+						}
+					}
 				},
 			}
 
@@ -180,6 +208,7 @@
 	</head>
 	<body>
 		<div id="link-box">
+			<a href="#" id="play-pause">pause</a> - 
 			<a href="README.markdown" target="_blank">about</a> -
 			<a href="http://github.com/jmhobbs/consume-less-create-more" target="_blank">fork me</a>
 		</div>
