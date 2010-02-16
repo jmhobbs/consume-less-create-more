@@ -42,8 +42,37 @@
 
 	header( 'Content-type: text/javascript' );
 
+/*
+	A blank, for your edification.
+
+	array(
+		"quote" => "",
+		"sayer" => "",
+		"link" => null,
+		"source" => ""
+	),
+*/
+
 	$quotes = array(
 		// Create More
+		array(
+			"quote" => "Our duty, as men and women, is to proceed as if limits to our ability did not exist. We are collaborators in creation.",
+			"sayer" => "Teilhard de Chardin",
+			"link" => null,
+			"source" => "http://thinkexist.com/quotes/with/keyword/creation/"
+		),
+		array(
+			"quote" => "When we engage in what we are naturally suited to do, our work takes on the quality of play and it is play that stimulates creativity.",
+			"sayer" => "Linda Naiman",
+			"link" => null,
+			"source" => "http://abundance-blog.marelisa-online.com/2009/01/27/75-creativity-quotes/"
+		),
+		array(
+			"quote" => "But this is just the start of something much bigger.",
+			"sayer" => "Cory Doctorow",
+			"link" => null,
+			"source" => "http://thinkexist.com/quotes/cory_doctorow/"
+		),
 		array(
 			"quote" => "Creativity is a type of learning process where the teacher and pupil are located in the same individual.",
 			"sayer" => "Arthur Koestler",

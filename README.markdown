@@ -13,7 +13,7 @@ Fork it, patch it, pull request.
 
 Quotes belong to the quoted.
 
-Copyright (c) 2010 John Hobbs <john@velvetcache.org>
+Copyright (c) 2010 John Hobbs
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
