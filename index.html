@@ -54,20 +54,47 @@
 				quote: null,
 				effect: null,
 				sayer: null,
+				linkbox: null,
 				body: null,
+				
 				debounce_resize: null,
+				control_fader: null,
+				control_fading_in: false,
+				token: "",
 
 				init: function () {
+					CLCM.token = Math.random();
 					CLCM.box = $( "#quote-box" );
 					CLCM.quote = $( "#quote" );
 					CLCM.effect = $( "#effect-wrapper" );
 					CLCM.sayer = $( "#sayer" );
 					CLCM.body = $( "body" );
+					CLCM.linkbox = $( "#link-box" );
+					
+					CLCM.linkbox.hide();
+					
+					$( window ).bind( 'resize', CLCM.window_resize ).trigger( 'resize' ).bind( 'mousemove', CLCM.window_mousemove );
+					setTimeout( CLCM.fresh_quote, 2500 );
 				},
 
 				window_resize: function () {
 					if( CLCM.debounce_resize ) { clearTimeout( CLCM.debounce_resize ); }
 					CLCM.debounce_resize = setTimeout( CLCM.reposition, 50 );
+				},
+
+				window_mousemove: function () {
+					if( CLCM.control_fader ) { clearTimeout( CLCM.control_fader ); }
+					CLCM.control_fader = setTimeout( CLCM.fade_controls, 2500 );
+					
+					if( CLCM.control_fading_in && CLCM.linkbox.is( ':animated' ) )
+						return;
+
+					CLCM.linkbox.fadeIn( 'fast' );
+				},
+				
+				fade_controls: function () {
+					CLCM.control_fading_in = false;
+					CLCM.linkbox.stop().fadeOut( 'fast' );
 				},
 
 				reposition: function () {
@@ -83,6 +110,9 @@
 				fresh_quote: function () {
 					$.getJSON(
 						'quote.json',
+						{
+							token: CLCM.token
+						},
 						function ( data ) {
 							CLCM.effect.fadeOut(
 								function () {
@@ -108,13 +138,8 @@
 				},
 			}
 
-			$(
-				function () {
-					CLCM.init();
-					$( window ).bind( 'resize', CLCM.window_resize ).trigger( 'resize' );
-					setTimeout( CLCM.fresh_quote, 2500 );
-				}
-			);
+			$( CLCM.init );
+
 		</script>
 		<style type="text/css">
 			html, body {

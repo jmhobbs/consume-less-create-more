@@ -1,7 +1,18 @@
 # What is ConsumeLessCreateMore.com?
 
-Consumerism is destroying the world, this is a call for **you** to start
-consuming less, and creating more.
+I feel I am much too easily satisfied by the mass produced pleasures of consumer 
+goods. Junk TV, junk food, junk living. I feel so much better when I create 
+something, even something small and meaningless like the website.
+
+I want to remind myself and others to stop being satisfied with the less.
+
+I am definitely not anti-capitalism, I think it's the best practical, scalable 
+economic system.
+
+If you have recommendations on quotes to add or remove please share them. I'd 
+really like it if other people got involved in quote selection.
+
+Thanks for looking, go create something.
 
 # Contribute
 
