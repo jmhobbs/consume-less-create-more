@@ -158,6 +158,12 @@
 			"sayer" => "Trevor Dunn",
 			"link" => null,
 			"source" => "http://www.brainyquote.com/quotes/keywords/consumerism.html"
+		),
+		array(
+			"quote" => "Never stay up on the barren heights of cleverness, but come down into the green valleys of silliness.",
+			"sayer" => "Ludwig Wittgenstein",
+			"link" => null,
+			"source" => "http://en.wikiquote.org/wiki/Ludwig_Wittgenstein"
 		)
 	);
 
