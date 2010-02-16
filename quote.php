@@ -167,4 +167,35 @@
 		)
 	);
 
-	die( $quote = json_encode( $quotes[array_rand( $quotes )] ) );
+	// If they provide a token, we should make sure they only see each quote once
+	if( isset( $_REQUEST['token'] ) && ! empty( $_REQUEST['token'] ) ) {
+		session_start();
+		$seen = array();
+		if( ! isset( $_SESSION['token'] ) || $_REQUEST['token'] != $_SESSION['token'] )
+			$_SESSION['token'] = $_REQUEST['token'];
+		else
+			$seen = unserialize( $_SESSION['seen'] );
+		
+		// Seen them all?
+		if( count( $seen ) == count( $quotes ) )
+			die( json_encode( array( 'completed' => true ) ) );
+		
+		// Filter them...
+		$choices = array();
+		foreach( $quotes as $key => $quote )
+			if( ! isset( $seen[$key] ) )
+				$choices[] = $key;
+		
+		// Choose one
+		$index = $choices[array_rand( $choices )];
+		
+		// Save it as seen
+		$seen[$index] = true;
+		$_SESSION['seen'] = serialize( $seen );
+		
+		die( $quote = json_encode( $quotes[$index] ) );
+	}
+	else {
+		// No token? Take what you are given.
+		die( $quote = json_encode( $quotes[array_rand( $quotes )] ) );
+	}

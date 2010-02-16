@@ -58,6 +58,7 @@
 				link_box: null,
 				body: null,
 				play_pause: null,
+				banner: null,
 				
 				// Timer to debounce window resize events
 				debounce_resize: null,
@@ -81,6 +82,7 @@
 					CLCM.body = $( "body" );
 					CLCM.play_pause = $( "#play-pause" );
 					CLCM.link_box = $( "#link-box" );
+					CLCM.banner = CLCM.quote.children().clone();
 					
 					CLCM.link_box.hide();
 					
@@ -142,29 +144,45 @@
 							CLCM.effect.fadeOut(
 								function () {
 									CLCM.quote.empty();
-									CLCM.quote.append( data.quote );
-									CLCM.sayer.empty();
-									if( null != data.link ) {
-										sayer = $('<a href="' + data.link + '" target="_blank">' + data.sayer + '</a>' );
+									console.log( data.completed );
+									if( true == data.completed ) {
+										CLCM.quote.append( CLCM.banner );
+										CLCM.sayer.empty();
+										CLCM.effect.fadeIn( 'fast' );
+										CLCM.play_pause.text( 'restart' );
 									}
 									else {
-										sayer = data.sayer;
-									}
-									CLCM.sayer.append( sayer );
-									CLCM.effect.fadeIn(
-										function () {
-											if( false != CLCM.quote_timer )
-												CLCM.quote_timer = setTimeout( CLCM.fresh_quote, 10000 );
+										CLCM.quote.append( data.quote );
+										CLCM.sayer.empty();
+										if( null != data.link ) {
+											sayer = $('<a href="' + data.link + '" target="_blank">' + data.sayer + '</a>' );
 										}
-									);
+										else {
+											sayer = data.sayer;
+										}
+										CLCM.sayer.append( sayer );
+										CLCM.effect.fadeIn(
+											function () {
+												if( false != CLCM.quote_timer )
+													CLCM.quote_timer = setTimeout( CLCM.fresh_quote, 10000 );
+											}
+										);
+									}
 								}
 							);
 						}
 					);
 				},
 				
-				// Play/Pause the page
+				// Play/Pause/Restart the page
 				change_state: function () {
+				
+					if( 'restart' == CLCM.play_pause.text() ) {
+						CLCM.play_pause.text( 'stop' );
+						CLCM.token = Math.random();
+						CLCM.quote_timer = false;
+					}
+					
 					if( false == CLCM.quote_timer ) {
 						CLCM.play_pause.text( 'pause' );
 						CLCM.quote_timer = null;
