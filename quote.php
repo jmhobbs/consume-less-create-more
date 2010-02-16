@@ -71,6 +71,12 @@
 			"content" => "Improving public education by empowering every teacher to be a change-maker and enabling any citizen to be a philanthropist.",
 			"name" => "Visit DonorsChoose.org",
 			"link" => "http://www.donorschoose.org/"
+		),
+		array(
+			"charity" => true,
+			"content" => "charity: water is a non-profit bringing clean and safe drinking water to people in developing nations.",
+			"name" => "Visit charity: water",
+			"link" => "http://www.charitywater.org/"
 		)
 	);
 
@@ -198,7 +204,7 @@
 		}
 		else
 			$seen = unserialize( $_SESSION['seen'] );
-		
+
 		// Seen them all?
 		if( count( $seen ) == count( $quotes ) )
 			die( json_encode( array( 'completed' => true ) ) );
@@ -206,7 +212,7 @@
 		// Tokened users get to see charity links every 4 quotes
 		if( ! isset( $_SESSION['charity-counter'] ) )
 			$_SESSION['charity-counter'] = 0;
-		
+
 		++$_SESSION['charity-counter'];
 
 		if( 0 == $_SESSION['charity-counter'] % 4 ) {
@@ -224,14 +230,14 @@
 		foreach( $quotes as $key => $quote )
 			if( ! isset( $seen[$key] ) )
 				$choices[] = $key;
-		
+
 		// Choose one
 		$index = $choices[array_rand( $choices )];
-		
+
 		// Save it as seen
 		$seen[$index] = true;
 		$_SESSION['seen'] = serialize( $seen );
-		
+
 		die( json_encode( $quotes[$index] ) );
 	}
 	else {
