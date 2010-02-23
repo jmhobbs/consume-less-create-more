@@ -120,8 +120,13 @@ var CLCM = {
 							CLCM.sayer.append( sayer );
 							CLCM.effect.fadeIn(
 								function () {
-									if( false != CLCM.quote_timer )
-										CLCM.quote_timer = setTimeout( CLCM.fresh_quote, 7500 );
+									if( false != CLCM.quote_timer ) {
+										if( null != data.showfor )
+											show_for = data.showfor
+										else
+											show_for = 7500
+										CLCM.quote_timer = setTimeout( CLCM.fresh_quote, show_for );
+									}
 								}
 							);
 						}

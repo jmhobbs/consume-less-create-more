@@ -81,7 +81,6 @@
 	);
 
 	$quotes = array(
-		// Create More
 		array(
 			"content" => "Our duty, as men and women, is to proceed as if limits to our ability did not exist. We are collaborators in creation.",
 			"name" => "Teilhard de Chardin",
@@ -136,14 +135,12 @@
 			"link" => null,
 			"source" => "http://www.wisdomquotes.com/cat_creativity.html"
 		),
-		// Mixed
-				array(
+		array(
 			"content" => "Happiness is not in the mere possession of money; it lies in the joy of achievement, in the thrill of creative effort.",
 			"name" => "Franklin D. Roosevelt",
 			"link" => null,
 			"source" => "http://www.wisdomquotes.com/cat_creativity.html"
 		),
-		// Consume Less
 		array(
 			"content" => "Growth for the sake of growth is the ideology of the cancer cell.",
 			"name" => "Edward Abbey",
@@ -191,6 +188,22 @@
 			"name" => "Ludwig Wittgenstein",
 			"link" => null,
 			"source" => "http://en.wikiquote.org/wiki/Ludwig_Wittgenstein"
+		),
+		// Courtesy of Jason Lefton - http://hellogylo.com/
+		array(
+			"content" => "I believe in technology, but I think we need to make it more human. I believe that the Internet is becoming a planetary meta-organism, but that it is up to us to guide its evolution, and to shape it into a space we actually want to inhabit - one that can understand and honor both the individual human and the human collective, just like real life does.",
+			"name" => "Jonathan Harris",
+			"link" => null,
+			"source" => null,
+			"showfor" => 15000
+		),
+		// Courtesy of Jason Lefton - http://hellogylo.com/
+		array(
+			"content" => "This is something that I've said before and I'll say it again: I've spent five years on this. You should spend an hour on it. You know, spend two hours on it. That would be the decent, respectful thing to do, as opposed to writing a snarky five-minute thing that's making fun of me, or saying what other people have said.",
+			"name" => "Charlie Kaufman",
+			"link" => null,
+			"source" => null,
+			"showfor" => 15000
 		)
 	);
 
